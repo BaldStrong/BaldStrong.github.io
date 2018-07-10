@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>csv文件数据操作函数总结 | BaldStrong&#39;s Log Cabin</title>
+  <title>Category: 杂 | BaldStrong&#39;s Log Cabin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。">
+  <meta name="description" content="�ɳ��еĲ���">
 <meta name="keywords" content="C++">
-<meta property="og:type" content="article">
-<meta property="og:title" content="csv文件数据操作函数总结">
-<meta property="og:url" content="http://yoursite.com/2018/06/20/csv文件数据操作函数总结/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BaldStrong&#39;s Log Cabin">
+<meta property="og:url" content="http://yoursite.com/categories/杂/index.html">
 <meta property="og:site_name" content="BaldStrong&#39;s Log Cabin">
-<meta property="og:description" content="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。">
+<meta property="og:description" content="�ɳ��еĲ���">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-10T16:10:45.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="csv文件数据操作函数总结">
-<meta name="twitter:description" content="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。">
+<meta name="twitter:title" content="BaldStrong&#39;s Log Cabin">
+<meta name="twitter:description" content="�ɳ��еĲ���">
   
   
     <link rel="icon" href="/favicon.png">
@@ -135,342 +134,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-csv文件数据操作函数总结" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      csv文件数据操作函数总结
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/10/hello-world/" class="archive-article-date">
+  	<time datetime="2018-07-10T15:19:35.061Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/10/hello-world/">Hello World</a>
     </h1>
   
 
-        
-        <a href="/2018/06/20/csv文件数据操作函数总结/" class="archive-article-date">
-  	<time datetime="2018-06-19T16:43:19.630Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在C-课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"><a href="#在C-课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。" class="headerlink" title="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"></a>在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。</h3><a id="more"></a>
-<hr>
-<p>#####<a href="https://baike.baidu.com/item/C%2B%2B%E6%96%87%E4%BB%B6%E6%B5%81/3633665" target="_blank" rel="noopener">C++文件流</a></p>
-<p>流，简单来说就是建立在面向对象基础上的一种抽象的处数据的工具。在流中，定义了一些处理数据的基本操作，如读取数据，写入数据等，程序员是对流进行所有操作的，而不用关心流的另一头数据的真正流向。流不但可以处理文件，还可以处理动态内存、网络数据等多种数据形式。如果你对流的操作非常熟练，在程序中利用流的方便性，写起程序会大大提高效率的。</p>
-<p>#####文件操作</p>
-<blockquote>
-<p>以下类型需要包含头文件 &lt; fstream&gt; </p>
-<p>ofstream 输出流：是从内存（控制台）读到硬盘;<br>ifstream  输入流：是从硬盘读到内存（控制台）.<br>fstream   文件流：是可对打开的文件进行读写操作. </p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>打开文件的方式</th>
-<th>在类ios(是所有流式I/O类的基类)中定义，常用的值如下：</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ios::app</td>
-<td>文件不存在则创建, 在原文件内容后写入新的内容，app即单词 [append：附加] 的缩写。</td>
-</tr>
-<tr>
-<td>ios::ate</td>
-<td>文件打开后定位到文件尾，ios:app就包含有此属性</td>
-</tr>
-<tr>
-<td>ios::binary</td>
-<td>以二进制方式打开文件，缺省的方式是文本方式。两种方式的区别见前文</td>
-</tr>
-<tr>
-<td>ios::in</td>
-<td>文件以输入方式打开（文件数据输入到内存）,文件不存在则创建(ifstream默认的打开方式)</td>
-</tr>
-<tr>
-<td>ios::out</td>
-<td>文件以输出方式打开（内存数据输出到文件）, 文件不存在则创建，若文件已存在则清空原内容(ofstream默认的打开方式)</td>
-</tr>
-<tr>
-<td>以下几个不常用：</td>
-<td></td>
-</tr>
-<tr>
-<td>ios::nocreate</td>
-<td>不建立文件，所以文件不存在时打开失败</td>
-</tr>
-<tr>
-<td>ios::noreplace</td>
-<td>不覆盖文件，所以打开文件时如果文件存在失败</td>
-</tr>
-<tr>
-<td>ios::trunc</td>
-<td>如果文件存在，把文件长度设为0</td>
-</tr>
-</tbody>
-</table>
-<p>关闭文件：file.close();                                //与new之后要delete一样，打开文件后必须关闭文件</p>
-<p>例：ifstream file(“d:\\date.csv”,ios::app);                     //路径名中的\要双写</p>
-<p>#####使用函数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> ch = file.get(); <span class="comment">//去读一个字符，然后才能用eof判断是否为空 </span></span><br><span class="line"> <span class="keyword">if</span>(file.eof())    <span class="comment">//如果 一个字符都未读到，表示文件为空</span></span><br><span class="line"> &#123;</span><br><span class="line">     ....</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//eof()函数要跟在读取语句后，用来判断是否读到文件结束符EOF。原因为：</span></span><br><span class="line"><span class="comment">//要清楚"文件结束符"(0xff).就是说我们文件最后的字符不是文件结束符,而最后的字符的下一位才是.所以操作再读多一次.</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/fengzi_shen/article/details/2197327" target="_blank" rel="noopener">参考资料</a></p>
-<p>#####操作文件指针</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ifstream和ofstream都提供了成员函数来重定位文件定位指针（文件中下一个被读取或写入的字节号）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在ifstream中 这个成员函数为seekg（"seek get"）;在ofstream中为seekp（"seek put"）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输入流操作</span></span><br><span class="line"></span><br><span class="line">seekg(绝对位置);　		  <span class="comment">//绝对移动，　</span></span><br><span class="line"></span><br><span class="line">seekg(相对位置,参照位置);　 <span class="comment">//相对操作</span></span><br><span class="line"></span><br><span class="line">tellg();　					  <span class="comment">//返回当前指针位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出流操作</span></span><br><span class="line"></span><br><span class="line">seekp(绝对位置);　		  <span class="comment">//绝对移动，　</span></span><br><span class="line"></span><br><span class="line">seekp(相对位置,参照位置);　 <span class="comment">//相对操作</span></span><br><span class="line"></span><br><span class="line">tellp()和tellg()成员函数分别用来返回当前get和put的指针位置</span><br><span class="line"></span><br><span class="line">参照位置：</span><br><span class="line"></span><br><span class="line">ios::beg　    <span class="comment">//相对于文件头</span></span><br><span class="line"></span><br><span class="line">ios::cur　    <span class="comment">//相对于当前位置</span></span><br><span class="line"></span><br><span class="line">ios::end　   <span class="comment">//相对于文件尾</span></span><br></pre></td></tr></table></figure>
-<p>例：  file.seekg(0,ios::end);       //参照位置为文件结束处，相对位置为0，即相对于文件尾移动0，于是指针定位在文件结束处</p>
-<p>​          file.seekg(0,ios::beg);        //基地址为文件头，偏移量为0，于是定位在文件头</p>
-<p><a href="https://baike.baidu.com/item/c%2B%2B%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4998210" target="_blank" rel="noopener">参考资料</a></p>
-<p><code>string函数</code></p>
-<blockquote>
-<p><code>getline（）函数</code></p>
-<p>getline()的原型是istream&amp; getline ( istream &amp;is , string &amp;str , char delim );</p>
-<p>其中 istream &amp;is 表示一个输入流，譬如cin；string&amp;str表示把从输入流读入的字符串存放在这个字符串中（可以自己随便命名，str什么的都可以）；char delim表示遇到这个字符停止读入，在不设置的情况下系统默认该字符为’\n’，也就是回车换行符（遇到回车停止读入）。</p>
-<p><a href="http://blog.sina.com.cn/s/blog_60263c1c0101ck25.html" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-<blockquote>
-<p><code>s.erase()函数</code></p>
-<p>erase函数的原型如下：</p>
-<p>（1）string&amp; erase ( size_t pos = 0, size_t n = npos );</p>
-<p>（2）iterator erase ( iterator position );</p>
-<p>（3）iterator erase ( iterator first, iterator last );</p>
-<p>也就是说有三种用法：</p>
-<p>（1）erase(pos,n); 删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符</p>
-<p>（2）erase(position);删除position处的一个字符(position是个string类型的迭代器)</p>
-<p>（3）erase(first,last);删除从first到last之间的字符（first和last都是迭代器）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="built_in">string</span> <span class="title">str</span> <span class="params">(<span class="string">"This is an example phrase."</span>)</span></span>;  </span><br><span class="line">&gt; <span class="built_in">string</span>::iterator it;  </span><br><span class="line">&gt;</span><br><span class="line">&gt; <span class="comment">// 第(1)种用法  </span></span><br><span class="line">&gt; str.erase (<span class="number">10</span>,<span class="number">8</span>);  </span><br><span class="line">&gt; <span class="built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;        <span class="comment">// "This is an phrase."  </span></span><br><span class="line">&gt;</span><br><span class="line">&gt; <span class="comment">// 第(2)种用法  </span></span><br><span class="line">&gt; it=str.begin()+<span class="number">9</span>;  </span><br><span class="line">&gt; str.erase (it);  </span><br><span class="line">&gt; <span class="built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;        <span class="comment">// "This is a phrase."  </span></span><br><span class="line">&gt;</span><br><span class="line">&gt; <span class="comment">// 第(3)种用法  </span></span><br><span class="line">&gt; str.erase (str.begin()+<span class="number">5</span>, str.end()<span class="number">-7</span>);  </span><br><span class="line">&gt; <span class="built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;        <span class="comment">// "This phrase."  </span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p><a href="https://blog.csdn.net/lj_2_0_2/article/details/51848875" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-<blockquote>
-<p><code>atoi()与stoi()函数</code></p>
-<p>atoi：表示 ascii to integer，C语言函数，包含在<ctdlib>头文件</ctdlib></p>
-<p>stoi：表示 string to integer，包含在<cstring>头文件</cstring></p>
-<p>二者作用均为把字符串转换为int.在使用Dev-C++编译时，在编译选项中已选iso C++11选项但仍然出错，必须在编译时加入如下指令：-std=c++11。使用VS2017</p>
-<p>不同的是atoi()的参数是 const char<em> ,因此对于一个字符串str我们必须调用 c_str()的方法把这个string转换成 const char</em>类型的,而stoi()的参数是const string<em>,不需要转化为 const char</em>；</p>
-<p>stoi函数默认要求输入的参数字符串是符合int范围的[-2147483648, 2147483647]，否则会runtime error。<br>atoi函数则不做范围检查，若超过int范围，则显示-2147483648（溢出下界）或者2147483647（溢出上界）。</p>
-<p><a href="https://www.cnblogs.com/guhejian/p/6048856.html" target="_blank" rel="noopener">参考资料1</a></p>
-<p><a href="https://blog.csdn.net/yky__xukai/article/details/79554963" target="_blank" rel="noopener">参考资料2</a></p>
-<p><a href="https://www.cnblogs.com/wzxwhd/p/6030083.html" target="_blank" rel="noopener">参考资料3</a></p>
-<p><a href="https://blog.csdn.net/lina_acm/article/details/51865277" target="_blank" rel="noopener">参考资料4</a></p>
-</blockquote>
-<blockquote>
-<p><code>itoa()函数</code></p>
-<p>itoa表示：integer to array，是广泛应用的非标准C语言和C++语言扩展函数。由于它不是标准C/C++语言函数，所以不能在所有的编译器中使用。但是，大多数的编译器（如Windows上的）通常在&lt;stdlib.h&gt;/<cstdlib>头文件中包含这个函数。</cstdlib></p>
-<p>功能：将任意类型的数字转换为字符串。在&lt;stdlib.h&gt;中与之有相反功能的函数是atoi。</p>
-<p>char *itoa( int value, char <em> </em>string,int radix*); </p>
-<p>原型说明：</p>
-<p>value：欲转换的数据。</p>
-<p>string：目标字符串的地址。</p>
-<p>radix：转换后的进制数，可以是10进制、16进制等。</p>
-<p>例：itoa(nu,str,10);            //将nu转换为字符串并赋给str，第三个参数采用十进制。 </p>
-<p><a href="https://baike.baidu.com/item/itoa%E5%87%BD%E6%95%B0/3260813" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-<blockquote>
-<p><code>replace()函数</code></p>
-<p>此函数常用方法有九种，这里简单介绍第一种，其他方法见参考资料：</p>
-<p>string&amp; replace (size_t pos, size_t len, const string&amp; str) 用str 替换指定字符串从起始位置pos开始长度为len 的字符</p>
-<p>例：s.replace(s.find(“,”),1,”\t”);   //在字符串s中查找第一个逗号，然后把逗号换成\t</p>
-<p><a href="https://blog.csdn.net/wangqing_12345/article/details/71459300" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-<blockquote>
-<p><code>find()函数</code></p>
-<p>所有重载函数：</p>
-<p>PS：网上关于以下函数的返回类型有int、size_type、size_t</p>
-<p>int find(char c, int pos = 0) const;            //从pos开始查找字符c在当前字符串的位置<br>int find(const char <em>s, int pos = 0) const;        //从pos开始查找字符串s在当前串中的位置<br>int find(const char </em>s, int pos, int n) const;    //从pos开始查找字符串s中前n个字符在当前串中的位置<br>int find(const string &amp;s, int pos = 0) const;    //从pos开始查找字符串s在当前串中的位置</p>
-<p>int find_first_of(char c, int pos = 0) const;    //从pos开始查找字符c第一次出现的位置</p>
-<p> //从pos开始查找当前串中第一个在s的前n个字符组成的数组里的字符的位置<br>int find_first_of(const char *s, int pos = 0) const;</p>
-<p>int find_first_of(const char *s, int pos, int n) const;<br>int find_first_of(const string &amp;s,int pos = 0) const;</p>
-<p><strong>共同点：</strong></p>
-<p>查找成功时返回所在位置，失败返回string::npos的值，string::npos一般是MAX_INT（即2^32 - 1）</p>
-<p><strong>差异：</strong></p>
-<p>find(): 查找字符串中第一次出现字符c、字符串s的位置；</p>
-<p>find_first_of(): 查找字符串中字符c、字符数组s中任意一个字符第一次出现的位置。</p>
-<p>以上所讲的所有的string查找函数，都有唯一的返回类型，那就是size_type，即一个无符号整数（按打印出来的算）。若查找成功，返回按查找规则找到的第一个字符或子串的位置；若查找失败，返回npos，即-1（打印出来为4294967295）。</p>
-<p><strong>现区分size_type、size_t：</strong></p>
-<p>为了使自己的程序有很好的移植性，c++程序员应该尽量使用size_t和size_type而不是int,                             unsigned</p>
-<p>size_t是全局定义的类型；size_type是STL类中定义的类型属性，用以保存任意string和vector类对象的长度</p>
-<p>string::size_type 制类型一般就是unsigned int, 但是不同机器环境长度可能不同 win32 和win64上长度差别;size_type一般也是unsigned int</p>
-<p>使用的时候可以参考：</p>
-<p>   string::size_type  a =123;<br>   vector<int>size_type b=234;<br>   size_t b=456;</int></p>
-<p>size_t 使用的时候头文件需要 <cstddef> ；size_type 使用的时候需要<string>或者<vector></vector></string></cstddef></p>
-<p>sizeof(string::size_type) </p>
-<p>​     sizeof(vector<bool>::size_type)<br>     sizeof(vector<char>::size_type)<br>     sizeof(size_t)<br>     上述长度均相等，长度为win32:4 win64:8</char></bool></p>
-<p>二者联系：在用下标访问元素时，vector使用vector::size_type作为下标类型，而数组下标的正确类型则是size_t</p>
-<p>例：std::string::size_type posA = s.find(a);    //使用size_type容器 ，<br>    if (posA != std::string::npos)             //如果s字符串中存在a，即posA不是npos<br>        {….} </p>
-<p><a href="https://blog.csdn.net/richard_123/article/details/51140229" target="_blank" rel="noopener">参考资料1</a></p>
-<p><a href="https://zhidao.baidu.com/question/388113220.html" target="_blank" rel="noopener">参考资料2</a></p>
-</blockquote>
-<blockquote>
-<p><code>resize()函数</code></p>
-<p>1、resize(n)<br>调整容器的长度大小，使其能容纳n个元素。<br>如果n小于容器的当前的size，则删除多出来的元素。<br>否则，添加采用值初始化的元素。<br>2、 resize(n，t)<br>多一个参数t，将所有新添加的元素初始化为t。</p>
-<p><a href="https://blog.csdn.net/wdkirchhoff/article/details/41988201" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-<blockquote>
-<p><code>peek()函数</code></p>
-<p>功能：peek函数用于读取并返回下一个字符，但并不提取该字符到输入流中，也就是说，依然让该字符作为将要提取到输入流的下一个字符。</p>
-<p>例：</p>
-<p>if(file.peek() == EOF)    //如果文件指针下一个字符为EOF，即读到文件尾。<br>{….}</p>
-<p><a href="https://blog.csdn.net/cs_zlg/article/details/8271741" target="_blank" rel="noopener">参考资料</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
+        <div class="article-info info-on-right">
+          
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color4">C++</a>
+        			<a href="/categories/杂//" class="article-tag-list-link color2">杂</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/20/csv文件数据操作函数总结/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/07/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在C-课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"><span class="toc-number">1.</span> <span class="toc-text">在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://yoursite.com/2018/06/20/csv文件数据操作函数总结/", 
-    sourceId: "csv文件数据操作函数总结",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -493,10 +210,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
