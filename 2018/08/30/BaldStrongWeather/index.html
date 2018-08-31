@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | BaldStrong&#39;s Log Cabin</title>
+  <title>《第一行代码》第十四章笔记 | BaldStrong&#39;s Log Cabin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习中的菜鸟">
-<meta name="keywords" content="C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BaldStrong&#39;s Log Cabin">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="实战：开发光头强天气app。">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《第一行代码》第十四章笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/BaldStrongWeather/index.html">
 <meta property="og:site_name" content="BaldStrong&#39;s Log Cabin">
-<meta property="og:description" content="学习中的菜鸟">
+<meta property="og:description" content="实战：开发光头强天气app。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/201803020959501006.png">
+<meta property="og:updated_time" content="2018-08-31T16:33:57.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BaldStrong&#39;s Log Cabin">
-<meta name="twitter:description" content="学习中的菜鸟">
+<meta name="twitter:title" content="《第一行代码》第十四章笔记">
+<meta name="twitter:description" content="实战：开发光头强天气app。">
+<meta name="twitter:image" content="http://yoursite.com/images/201803020959501006.png">
   
   
     <link rel="icon" href="/img/head.ico">
@@ -150,36 +153,66 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-BaldStrongWeather" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      《第一行代码》第十四章笔记
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/30/BaldStrongWeather/" class="archive-article-date">
+
+        
+        <a href="/2018/08/30/BaldStrongWeather/" class="archive-article-date">
   	<time datetime="2018-08-29T16:21:05.351Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/30/BaldStrongWeather/">《第一行代码》第十四章笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>实战：开发光头强天气app。<br><a id="more"></a></p>
+<h3 id="包结构："><a href="#包结构：" class="headerlink" title="包结构："></a>包结构：</h3><ul>
+<li><p>db包：       存放数据库模型相关代码</p>
+</li>
+<li><p>gson包：    存放GSON模型相关代码</p>
+</li>
+<li><p>service包：存放服务相关代码</p>
+</li>
+<li><p>util包：       存放工具相关代码</p>
+</li>
+</ul>
+<h3 id="库依赖"><a href="#库依赖" class="headerlink" title="库依赖"></a>库依赖</h3><ul>
+<li><p>LitePal： 操作数据库</p>
+</li>
+<li><p>OkHttp：进行网络请求</p>
+</li>
+<li><p>GSON：  解析JSON数据</p>
+</li>
+<li><p>Glide：   加载和展示图片</p>
+</li>
+</ul>
+<p>天气API调用：</p>
+<p><a href="http://guolin.tech/api/weather?cityid=CN101190401&amp;key=148fb9dc0bf84a988625cb81663ddca1" target="_blank" rel="noopener">http://guolin.tech/api/weather?cityid=CN101190401&amp;key=148fb9dc0bf84a988625cb81663ddca1</a></p>
+<p>获取JSON内容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"HeWeather"</span>: [&#123;<span class="attr">"basic"</span>:&#123;<span class="attr">"cid"</span>:<span class="string">"CN101190401"</span>,<span class="attr">"location"</span>:<span class="string">"苏州"</span>,<span class="attr">"parent_city"</span>:<span class="string">"苏州"</span>,<span class="attr">"admin_area"</span>:<span class="string">"江苏"</span>,<span class="attr">"cnty"</span>:<span class="string">"中国"</span>,<span class="attr">"lat"</span>:<span class="string">"31.29937935"</span>,<span class="attr">"lon"</span>:<span class="string">"120.61958313"</span>,<span class="attr">"tz"</span>:<span class="string">"+8.00"</span>,<span class="attr">"city"</span>:<span class="string">"苏州"</span>,<span class="attr">"id"</span>:<span class="string">"CN101190401"</span></span><br><span class="line">	,<span class="attr">"update"</span>:&#123;<span class="attr">"loc"</span>:<span class="string">"2018-08-30 23:46"</span>,<span class="attr">"utc"</span>:<span class="string">"2018-08-30 15:46"</span>&#125;&#125;</span><br><span class="line">	,<span class="attr">"update"</span>:&#123;<span class="attr">"loc"</span>:<span class="string">"2018-08-30 23:46"</span>,<span class="attr">"utc"</span>:<span class="string">"2018-08-30 15:46"</span>&#125;</span><br><span class="line">	,<span class="attr">"status"</span>:<span class="string">"ok"</span></span><br><span class="line">	,<span class="attr">"now"</span>:&#123;<span class="attr">"cloud"</span>:<span class="string">"13"</span>,<span class="attr">"cond_code"</span>:<span class="string">"101"</span>,<span class="attr">"cond_txt"</span>:<span class="string">"多云"</span>,<span class="attr">"fl"</span>:<span class="string">"31"</span>,<span class="attr">"hum"</span>:<span class="string">"78"</span>,<span class="attr">"pcpn"</span>:<span class="string">"0.0"</span>,<span class="attr">"pres"</span>:<span class="string">"1006"</span>,<span class="attr">"tmp"</span>:<span class="string">"29"</span>,<span class="attr">"vis"</span>:<span class="string">"19"</span>,<span class="attr">"wind_deg"</span>:<span class="string">"155"</span>,<span class="attr">"wind_dir"</span>:<span class="string">"东南风"</span>,<span class="attr">"wind_sc"</span>:<span class="string">"3"</span>,<span class="attr">"wind_spd"</span>:<span class="string">"17"</span>,<span class="attr">"cond"</span>:&#123;<span class="attr">"code"</span>:<span class="string">"101"</span>,<span class="attr">"txt"</span>:<span class="string">"多云"</span>&#125;&#125;</span><br><span class="line">	,<span class="attr">"daily_forecast"</span>:[&#123;<span class="attr">"date"</span>:<span class="string">"2018-08-30"</span>,<span class="attr">"cond"</span>:&#123;<span class="attr">"txt_d"</span>:<span class="string">"多云"</span>&#125;,<span class="attr">"tmp"</span>:&#123;<span class="attr">"max"</span>:<span class="string">"34"</span>,<span class="attr">"min"</span>:<span class="string">"27"</span>&#125;&#125;</span><br><span class="line">		,&#123;<span class="attr">"date"</span>:<span class="string">"2018-08-31"</span>,<span class="attr">"cond"</span>:&#123;<span class="attr">"txt_d"</span>:<span class="string">"雷阵雨"</span>&#125;,<span class="attr">"tmp"</span>:&#123;<span class="attr">"max"</span>:<span class="string">"32"</span>,<span class="attr">"min"</span>:<span class="string">"26"</span>&#125;&#125;</span><br><span class="line">		,&#123;<span class="attr">"date"</span>:<span class="string">"2018-09-01"</span>,<span class="attr">"cond"</span>:&#123;<span class="attr">"txt_d"</span>:<span class="string">"雷阵雨"</span>&#125;,<span class="attr">"tmp"</span>:&#123;<span class="attr">"max"</span>:<span class="string">"30"</span>,<span class="attr">"min"</span>:<span class="string">"26"</span>&#125;&#125;]</span><br><span class="line">	,<span class="attr">"aqi"</span>:&#123;<span class="attr">"city"</span>:&#123;<span class="attr">"aqi"</span>:<span class="string">"42"</span>,<span class="attr">"pm25"</span>:<span class="string">"17"</span>,<span class="attr">"qlty"</span>:<span class="string">"优"</span>&#125;&#125;</span><br><span class="line">	,<span class="attr">"suggestion"</span>:&#123;<span class="attr">"comf"</span>:&#123;<span class="attr">"type"</span>:<span class="string">"comf"</span>,<span class="attr">"brf"</span>:<span class="string">"较不舒适"</span>,<span class="attr">"txt"</span>:<span class="string">"今天夜间天气较热，虽然有雨，但仍然无法削弱较高气温给人们带来的暑意，这种天气会让您感到不很舒适。"</span>&#125;</span><br><span class="line">	,<span class="attr">"sport"</span>:&#123;<span class="attr">"type"</span>:<span class="string">"sport"</span>,<span class="attr">"brf"</span>:<span class="string">"较不宜"</span>,<span class="attr">"txt"</span>:<span class="string">"有降水，且风力较强，推荐您在室内进行低强度运动；若坚持户外运动，请选择避雨防风的地点。"</span>&#125;</span><br><span class="line">	,<span class="attr">"cw"</span>:&#123;<span class="attr">"type"</span>:<span class="string">"cw"</span>,<span class="attr">"brf"</span>:<span class="string">"不宜"</span>,<span class="attr">"txt"</span>:<span class="string">"不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"</span>&#125;&#125;&#125;]&#125;</span><br></pre></td></tr></table></figure>
+<p><code>#fff :白色</code></p>
+<p><code>android:background=&quot;#8000&quot; 透明背景</code></p>
+<p>获取必应每日一图方式：</p>
+<p>必应首页→查看源代码→最后一行为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//]]&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/az/hprichbg/rb/LawnBowling_EN-CN10492037230_1920x1080.jpg"</span> <span class="attr">style</span>=<span class="string">"display:none"</span> <span class="attr">onload</span>=<span class="string">"sc_lI(true);"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>图片地址为：必应首页地址+/az/hprichbg/rb/LawnBowling_EN-CN10492037230_1920x1080.jpg</p>
+<h3 id="颜色属性："><a href="#颜色属性：" class="headerlink" title="颜色属性："></a>颜色属性：</h3><p><img src="/images/201803020959501006.png" alt="img"></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,7 +224,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -204,461 +237,116 @@ var _hmt = _hmt || [];
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/30/BaldStrongWeather/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/29/《第一行代码》第十一章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-29T03:07:43.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/29/《第一行代码》第十一章笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《第一行代码》第十一章笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/29/《第一行代码》第十一章笔记/">《第一行代码》第十一章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#包结构："><span class="toc-number">1.</span> <span class="toc-text">包结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#库依赖"><span class="toc-number">2.</span> <span class="toc-text">库依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜色属性："><span class="toc-number">3.</span> <span class="toc-text">颜色属性：</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/27/《第一行代码》第十章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-27T15:39:49.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/27/《第一行代码》第十章笔记/">《第一行代码》第十章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/26/Android Studio自带模拟器联网/" class="archive-article-date">
-  	<time datetime="2018-08-26T07:36:26.109Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/26/Android Studio自带模拟器联网/">Android Studio自带模拟器联网</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/教程//" class="article-tag-list-link color3">教程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/26/《第一行代码》第九章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-26T04:52:32.914Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/26/《第一行代码》第九章笔记/">《第一行代码》第九章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/26/《第一行代码》第八章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-25T16:09:04.726Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/26/《第一行代码》第八章笔记/">《第一行代码》第八章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/24/《第一行代码》第七章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-24T04:29:50.743Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/24/《第一行代码》第七章笔记/">《第一行代码》第七章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/22/《第一行代码》第六章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-22T05:32:00.145Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/22/《第一行代码》第六章笔记/">《第一行代码》第六章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/21/《第一行代码》第五章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-21T09:39:14.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/21/《第一行代码》第五章笔记/">《第一行代码》第五章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/15/《第一行代码》第一章笔记/" class="archive-article-date">
-  	<time datetime="2018-08-15T07:06:33.733Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/《第一行代码》第一章笔记/">《第一行代码》第一章笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -693,8 +381,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
