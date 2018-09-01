@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/1534844884905.png">
 <meta property="og:image" content="http://yoursite.com/images/1534844934919.png">
-<meta property="og:updated_time" content="2018-08-31T16:32:05.988Z">
+<meta property="og:updated_time" content="2018-09-01T04:57:43.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码》第五章笔记">
 <meta name="twitter:description" content="《第一行代码》第五章——广播机制！">
@@ -175,9 +175,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>《第一行代码》第五章——广播机制！<br><a id="more"></a></p>
-<h2 id="第五章、广播机制"><a href="#第五章、广播机制" class="headerlink" title="#第五章、广播机制"></a>#第五章、广播机制</h2><blockquote>
-<p>###广播分为标准广播和有序广播</p>
-</blockquote>
+<h2 id="第五章、广播机制"><a href="#第五章、广播机制" class="headerlink" title="#第五章、广播机制"></a>#第五章、广播机制</h2><p>##广播分为标准广播和有序广播</p>
 <ul>
 <li><p><strong>标准广播：</strong>是一种完全异步执行的广播，在广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，因此他们之间没有任何先后顺序可言。这种广播的效率会比较高，但同时也意味着它是无法被截断的。<img src="/images/1534844884905.png" alt="1534844884905"></p>
 </li>
@@ -185,16 +183,12 @@ var _hmt = _hmt || [];
 <p><img src="/images/1534844934919.png" alt="1534844934919"></p>
 </li>
 </ul>
-<blockquote>
-<h3 id="创建广播"><a href="#创建广播" class="headerlink" title="创建广播"></a>创建广播</h3></blockquote>
-<p><strong>注册广播</strong>的方式一般有两种：在代码中注册和在AndroidManifest.xml中注册，其中前者也被称为<strong>动态注册</strong>，后者也被称为<strong>静态注册</strong>。</p>
+<h2 id="创建广播"><a href="#创建广播" class="headerlink" title="创建广播"></a>创建广播</h2><p><strong>注册广播</strong>的方式一般有两种：在代码中注册和在AndroidManifest.xml中注册，其中前者也被称为<strong>动态注册</strong>，后者也被称为<strong>静态注册</strong>。</p>
 <p>静态注册主要是为了让程序在未启动的情况下也能收到广播。</p>
 <p><strong>创建广播接收器：</strong>新建一个继承BroadcastReceiver的类，并重写父类的onReceive（）方法就行了。当有广播到来时，onReceive（）方法执行，具体的逻辑就可以在这个方法中处理</p>
 <p>动态注册的广播接收器一定要取消注册。</p>
 <p>静态的广播接收器一定要在AndroidManifest.xml文件中注册才可以使用，不过由于我们是使用AS的快捷方式创建的广播接收器，因此注册这一步已经被自动完成了。</p>
-<blockquote>
-<h3 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h3></blockquote>
-<ul>
+<h2 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h2><ul>
 <li>发送标准广播</li>
 <li>发送有序广播</li>
 <li>发送本地广播：发出的广播只能在应用程序内容传递，并且广播接收器也只能接收来自本应用程序发出的广播</li>
@@ -331,7 +325,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第五章、广播机制"><span class="toc-number">1.</span> <span class="toc-text">#第五章、广播机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建广播"><span class="toc-number">1.1.</span> <span class="toc-text">创建广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送广播"><span class="toc-number">1.2.</span> <span class="toc-text">发送广播</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第五章、广播机制"><span class="toc-number">1.</span> <span class="toc-text">#第五章、广播机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建广播"><span class="toc-number">2.</span> <span class="toc-text">创建广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送广播"><span class="toc-number">3.</span> <span class="toc-text">发送广播</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -447,19 +441,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>

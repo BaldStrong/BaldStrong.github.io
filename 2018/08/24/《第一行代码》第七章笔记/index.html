@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="BaldStrong&#39;s Log Cabin">
 <meta property="og:description" content="《第一行代码》第七章——内容提供器！">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T16:29:45.883Z">
+<meta property="og:updated_time" content="2018-09-01T04:58:46.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码》第七章笔记">
 <meta name="twitter:description" content="《第一行代码》第七章——内容提供器！">
@@ -177,9 +177,9 @@ var _hmt = _hmt || [];
 <p><em>内容提供器主要用于在不同的应用程序之间实现数据共享的功能，它提供了一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访数据的安全性。</em></p>
 <p><em>使用内容提供器是Android实现跨程序共享数据的标准方式。</em></p>
 </blockquote>
-<h3 id="·运行时权限"><a href="#·运行时权限" class="headerlink" title="·运行时权限"></a>·运行时权限</h3><p><u>Android权限分为普通权限和危险权限。普通权限只需在AndroidManifest.xml文件中添加一下权限声明，而危险权限需要进行运行时权限处理</u>。</p>
+<h2 id="·运行时权限"><a href="#·运行时权限" class="headerlink" title="·运行时权限"></a>·运行时权限</h2><p><u>Android权限分为普通权限和危险权限。普通权限只需在AndroidManifest.xml文件中添加一下权限声明，而危险权限需要进行运行时权限处理</u>。</p>
 <p>表格中每个危险权限都属于一个权限组，我们在进行运行时权限处理时使用的是权限名，但是用户一旦同意授权了，那么该权限对应的权限组中所有的其他权限也会同时被授权。</p>
-<h3 id="·内容提供器"><a href="#·内容提供器" class="headerlink" title="·内容提供器"></a>·内容提供器</h3><pre><code>两种用法：即使用已有的内容提供器，或者创建自己的内容提供器给程序的数据提供外部访问接口。
+<h2 id="·内容提供器"><a href="#·内容提供器" class="headerlink" title="·内容提供器"></a>·内容提供器</h2><pre><code>两种用法：即使用已有的内容提供器，或者创建自己的内容提供器给程序的数据提供外部访问接口。
 </code></pre><p>访问内容提供器中共享的数据，需要使用ContentResolver类，可通过Context中的getContentResolver()方法获取到该类的实例。不同于SQLiteDatabase，ContentResolver中的增删改查方法都不接收表名参数，而是使用一个Uri参数代替，这个参数被称为<strong>内容URI</strong>。内容URI给内容提供器中的数据建立了唯一的标识符，它主要由两部分组成：<strong>authority和path。authority是用于对不同的应用程序做区分的，一般为了避免冲突，都会采用程序包名的方式来进行命名。path则是用于对同一应用程序中不同的表做区分的，通常都会添加到authority的后面。URI头部还需加上协议声明：content://包名.provider/表名</strong></p>
 <blockquote>
 <p><strong><em>URI：Uniform Resource Identifier  统一资源标识</em></strong></p>
@@ -320,7 +320,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第七章、内容提供器"><span class="toc-number">1.</span> <span class="toc-text">第七章、内容提供器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#·运行时权限"><span class="toc-number">1.0.1.</span> <span class="toc-text">·运行时权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#·内容提供器"><span class="toc-number">1.0.2.</span> <span class="toc-text">·内容提供器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跨程序数据共享未成功实现！"><span class="toc-number">2.</span> <span class="toc-text">跨程序数据共享未成功实现！</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第七章、内容提供器"><span class="toc-number">1.</span> <span class="toc-text">第七章、内容提供器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#·运行时权限"><span class="toc-number">1.1.</span> <span class="toc-text">·运行时权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#·内容提供器"><span class="toc-number">1.2.</span> <span class="toc-text">·内容提供器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跨程序数据共享未成功实现！"><span class="toc-number">2.</span> <span class="toc-text">跨程序数据共享未成功实现！</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -436,19 +436,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>

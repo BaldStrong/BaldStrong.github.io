@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="BaldStrong&#39;s Log Cabin">
 <meta property="og:description" content="《第一行代码》第一章笔记！">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T16:28:50.333Z">
+<meta property="og:updated_time" content="2018-09-01T04:59:07.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《第一行代码》第一章笔记">
 <meta name="twitter:description" content="《第一行代码》第一章笔记！">
@@ -172,59 +172,56 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>《第一行代码》第一章笔记！<br><a id="more"></a></p>
-<h4 id="项目结构："><a href="#项目结构：" class="headerlink" title="项目结构："></a>项目结构：</h4><ul>
+<h2 id="项目结构："><a href="#项目结构：" class="headerlink" title="项目结构："></a>项目结构：</h2><ul>
 <li>Android模式：被AS转换过的，结构简洁明了。适合进行快速开发</li>
 <li>Project模式：项目真实的目录结构</li>
 </ul>
-<h4 id="外层目录结构"><a href="#外层目录结构" class="headerlink" title="外层目录结构"></a>外层目录结构</h4><p><code>.gradle和.idea</code></p>
-<pre><code>AS自动生成的一些文件，无需关心，不用动
-</code></pre><p><code>.app</code></p>
-<pre><code>放置项目中几乎所有的代码、资源
-</code></pre><p><code>.build</code></p>
-<pre><code>编译时自动生成的文件，无需关心
-</code></pre><p><code>.gradle</code></p>
-<pre><code>Gradle是个构建系统，能够简化你的编译、打包、测试过程。 
-
-   [彻底搞懂Gradle、Gradle Wrapper与Android Plugin for Gradle的区别和联系](https://www.cnblogs.com/jiangxinnju/p/8229129.html)
-
- [gradle wrapper的使用](https://blog.csdn.net/stevejobson/article/details/53448071)
-
- [理解 Gradle Wrapper](https://blog.csdn.net/zsensei/article/details/78443501)
-</code></pre><p><code>.gitignore</code></p>
-<pre><code>用来将指定的目录或文件排除在版本控制之外
-</code></pre><p><code>build.gradle</code></p>
-<pre><code>这是项目的全局gradle构建脚本，通常无需修改
-</code></pre><p><code>gradle.properties</code></p>
-<pre><code>全局的gradle配置文件
-</code></pre><p><code>gradlew和gradlew.bat</code>    </p>
-<pre><code>分别在Linux、Mac和windows系统（.bat）命令行界面执行gradle命令
-</code></pre><p><code>XXX.iml</code></p>
-<pre><code>iml文件是所有IDEA项目都会自动生成的一个文件，AS是基于IDEA开发的，用于标识这是一个IDEA项目
-</code></pre><p><code>local.properties</code>    </p>
-<pre><code>用于指定本机中的Android SDK路径，通常是自动生成的，如果本机中的Android SDK路径发生变化，那么就应该修改它
-</code></pre><p><code>settings.gradle</code></p>
-<pre><code>用于指定项目中所有引入的模块，例如HelloWorld项目中就只有一个app模块，因此该文件就只引入了app这一个模块，通常模块的引入都是自动完成的。
-</code></pre><h4 id="详解-app目录"><a href="#详解-app目录" class="headerlink" title="详解.app目录"></a>详解.app目录</h4><p><code>build</code></p>
-<pre><code>和外层的build目录类似，主要也是包含一些在编译时自动生成的文件，不过内容更多更杂
-</code></pre><p><code>libs</code></p>
-<pre><code>如果你的项目中使用到了第三方jar包，就需要把这个些jar包都放在libs目录下，这些jar包会被自动添加到构建路径里去
-</code></pre><p><code>androidTest</code></p>
-<pre><code>用来编写Android Test测试用例，可以对项目进行一些自动化测试
-</code></pre><p><code>java</code></p>
-<pre><code>放置java代码的地方
-</code></pre><p><code>res</code></p>
-<pre><code>项目中使用到的所有图片、布局、字符串等资源，drawable（图片）、layout（布局）、values（字符串、样式、颜色）、以mipmap开头的都是放应用图标的
-</code></pre><p><code>AndroidManifest</code></p>
-<pre><code>整个Android项目的配置文件，在程序中定义的所有四大组件都需要在这个文件里注册，还可在这个文件中给应用程序添加权限声明。
-</code></pre><p><code>test</code></p>
-<pre><code>编写单元测试用例，是对项目进行自动化测试的另一种方式
-</code></pre><p><code>.gitignore</code></p>
-<pre><code>用于将app模块内的指定的目录或文件排除在版本控制之外，和外层的.gitignore文件类似
-</code></pre><p><code>app.iml</code></p>
-<pre><code>IDEA项目自动生成的文件
-</code></pre><p><code>proguard-rules.pro</code> （混淆规则）</p>
-<pre><code>用于指定代码的混淆规则，当代码开发完成后打包成安装包文件，如果不希望代码被破解，可以将代码混淆，从而让破解者难以阅读
-</code></pre><p><strong><code>闭包</code>就是能够读取其他函数内部变量的函数。</strong> </p>
+<h2 id="外层目录结构"><a href="#外层目录结构" class="headerlink" title="外层目录结构"></a>外层目录结构</h2><p><code>.gradle和.idea</code></p>
+<p>AS自动生成的一些文件，无需关心，不用动</p>
+<p><code>.app</code></p>
+<p>放置项目中几乎所有的代码、资源</p>
+<p><code>.build</code></p>
+<p>编译时自动生成的文件，无需关心</p>
+<p><code>.gradle</code></p>
+<p>Gradle是个构建系统，能够简化你的编译、打包、测试过程。 </p>
+<p><a href="https://www.cnblogs.com/jiangxinnju/p/8229129.html" target="_blank" rel="noopener">彻底搞懂Gradle、Gradle Wrapper与Android Plugin for Gradle的区别和联系</a></p>
+<p><a href="https://blog.csdn.net/stevejobson/article/details/53448071" target="_blank" rel="noopener">gradle wrapper的使用</a></p>
+<p><a href="https://blog.csdn.net/zsensei/article/details/78443501" target="_blank" rel="noopener">理解 Gradle Wrapper</a></p>
+<p><code>.gitignore</code></p>
+<p>用来将指定的目录或文件排除在版本控制之外</p>
+<p><code>build.gradle</code></p>
+<p>这是项目的全局gradle构建脚本，通常无需修改</p>
+<p><code>gradle.properties</code></p>
+<p>全局的gradle配置文件</p>
+<p><code>gradlew和gradlew.bat</code>    </p>
+<p>分别在Linux、Mac和windows系统（.bat）命令行界面执行gradle命令</p>
+<p><code>XXX.iml</code></p>
+<p> iml文件是所有IDEA项目都会自动生成的一个文件，AS是基于IDEA开发的，用于标识这是一个IDEA项目</p>
+<p><code>local.properties</code>    </p>
+<p>  用于指定本机中的Android SDK路径，通常是自动生成的，如果本机中的Android SDK路径发生变化，那么就应该修改它</p>
+<p><code>settings.gradle</code></p>
+<p>  用于指定项目中所有引入的模块，例如HelloWorld项目中就只有一个app模块，因此该文件就只引入了app这一个模块，通常模块的引入都是自动完成的。</p>
+<h2 id="详解-app目录"><a href="#详解-app目录" class="headerlink" title="详解.app目录"></a>详解.app目录</h2><p><code>build</code></p>
+<p>  和外层的build目录类似，主要也是包含一些在编译时自动生成的文件，不过内容更多更杂</p>
+<p><code>libs</code></p>
+<p>  如果你的项目中使用到了第三方jar包，就需要把这个些jar包都放在libs目录下，这些jar包会被自动添加到构建路径里去</p>
+<p><code>androidTest</code></p>
+<p>  用来编写Android Test测试用例，可以对项目进行一些自动化测试</p>
+<p><code>java</code></p>
+<p>  放置java代码的地方</p>
+<p><code>res</code></p>
+<p>  项目中使用到的所有图片、布局、字符串等资源，drawable（图片）、layout（布局）、values（字符串、样式、颜色）、以mipmap开头的都是放应用图标的</p>
+<p><code>AndroidManifest</code></p>
+<p>  整个Android项目的配置文件，在程序中定义的所有四大组件都需要在这个文件里注册，还可在这个文件中给应用程序添加权限声明。</p>
+<p><code>test</code></p>
+<p>  编写单元测试用例，是对项目进行自动化测试的另一种方式</p>
+<p><code>.gitignore</code></p>
+<p>  用于将app模块内的指定的目录或文件排除在版本控制之外，和外层的.gitignore文件类似</p>
+<p><code>app.iml</code></p>
+<p>  IDEA项目自动生成的文件</p>
+<p><code>proguard-rules.pro</code> （混淆规则）</p>
+<p>  用于指定代码的混淆规则，当代码开发完成后打包成安装包文件，如果不希望代码被破解，可以将代码混淆，从而让破解者难以阅读</p>
+<p><strong><code>闭包</code>就是能够读取其他函数内部变量的函数。</strong> </p>
 <h4 id="Android中的三种依赖关系："><a href="#Android中的三种依赖关系：" class="headerlink" title="Android中的三种依赖关系："></a>Android中的三种依赖关系：</h4><p><code>本地依赖</code>：对本地的jar包或，目录添加依赖关系</p>
 <p><code>库依赖</code>：对项目中的库模块添加依赖关系</p>
 <p><code>远程依赖</code>：对jcenter库上的开源项目添加依赖关系</p>
@@ -403,7 +400,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#项目结构："><span class="toc-number">1.</span> <span class="toc-text">项目结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外层目录结构"><span class="toc-number">2.</span> <span class="toc-text">外层目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#详解-app目录"><span class="toc-number">3.</span> <span class="toc-text">详解.app目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的三种依赖关系："><span class="toc-number">4.</span> <span class="toc-text">Android中的三种依赖关系：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-taskAffinity和allowTaskReparenting属性详解"><span class="toc-number"></span> <span class="toc-text">Android taskAffinity和allowTaskReparenting属性详解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API总结："><span class="toc-number"></span> <span class="toc-text">API总结：</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构："><span class="toc-number">1.</span> <span class="toc-text">项目结构：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外层目录结构"><span class="toc-number">2.</span> <span class="toc-text">外层目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#详解-app目录"><span class="toc-number">3.</span> <span class="toc-text">详解.app目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android中的三种依赖关系："><span class="toc-number">3.0.1.</span> <span class="toc-text">Android中的三种依赖关系：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-taskAffinity和allowTaskReparenting属性详解"><span class="toc-number">3.1.</span> <span class="toc-text">Android taskAffinity和allowTaskReparenting属性详解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API总结："><span class="toc-number"></span> <span class="toc-text">API总结：</span></a>
                     </div>
                 </span>
             </div>
@@ -519,19 +516,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>
