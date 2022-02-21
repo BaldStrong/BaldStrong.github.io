@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>csv文件数据操作函数总结 - BaldStrong&#039;s Log Cabin</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="BaldStrong&#039;s Log Cabin"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BaldStrong&#039;s Log Cabin"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"><meta property="og:type" content="blog"><meta property="og:title" content="csv文件数据操作函数总结"><meta property="og:url" content="http://example.com/2018/06/20/csv%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="BaldStrong&#039;s Log Cabin"><meta property="og:description" content="在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2018-06-19T16:00:00.000Z"><meta property="article:modified_time" content="2018-07-11T15:40:07.604Z"><meta property="article:author" content="BaldStrong"><meta property="article:tag" content="C++"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2018/06/20/csv%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/"},"headline":"csv文件数据操作函数总结","image":["http://example.com/img/og_image.png"],"datePublished":"2018-06-19T16:00:00.000Z","dateModified":"2018-07-11T15:40:07.604Z","author":{"@type":"Person","name":"BaldStrong"},"publisher":{"@type":"Organization","name":"BaldStrong's Log Cabin","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。"}</script><link rel="canonical" href="http://example.com/2018/06/20/csv%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="BaldStrong&#039;s Log Cabin" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BaldStrong"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-06-19T16:00:00.000Z" title="2018/6/20上午12:00:00">2018-06-20</time>发表</span><span class="level-item"><time dateTime="2018-07-11T15:40:07.604Z" title="2018/7/11下午11:40:07">2018-07-11</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/C/">C++</a></span><span class="level-item">20 分钟读完 (大约2932个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">csv文件数据操作函数总结</h1><div class="content"><p>在C++课程设计中，由于采用了csv格式存储数据，故对文件操作涉及较多，在此总结一下csv文件格式的数据处理函数。</p>
+<span id="more"></span>
+<hr>
+<p>####<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/C%2B%2B%E6%96%87%E4%BB%B6%E6%B5%81/3633665">C++文件流</a></p>
+<p>流，简单来说就是建立在面向对象基础上的一种抽象的处数据的工具。在流中，定义了一些处理数据的基本操作，如读取数据，写入数据等，程序员是对流进行所有操作的，而不用关心流的另一头数据的真正流向。流不但可以处理文件，还可以处理动态内存、网络数据等多种数据形式。如果你对流的操作非常熟练，在程序中利用流的方便性，写起程序会大大提高效率的。</p>
+<p>####文件操作</p>
+<blockquote>
+<p>以下类型需要包含头文件 &lt; fstream&gt; </p>
+<p>ofstream 输出流：是从内存（控制台）读到硬盘;<br>ifstream  输入流：是从硬盘读到内存（控制台）.<br>fstream   文件流：是可对打开的文件进行读写操作. </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>打开文件的方式</th>
+<th>在类ios(是所有流式I&#x2F;O类的基类)中定义，常用的值如下：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ios::app</td>
+<td>文件不存在则创建, 在原文件内容后写入新的内容，app即单词 [append：附加] 的缩写。</td>
+</tr>
+<tr>
+<td>ios::ate</td>
+<td>文件打开后定位到文件尾，ios:app就包含有此属性</td>
+</tr>
+<tr>
+<td>ios::binary</td>
+<td>以二进制方式打开文件，缺省的方式是文本方式。两种方式的区别见前文</td>
+</tr>
+<tr>
+<td>ios::in</td>
+<td>文件以输入方式打开（文件数据输入到内存）,文件不存在则创建(ifstream默认的打开方式)</td>
+</tr>
+<tr>
+<td>ios::out</td>
+<td>文件以输出方式打开（内存数据输出到文件）, 文件不存在则创建，若文件已存在则清空原内容(ofstream默认的打开方式)</td>
+</tr>
+<tr>
+<td>以下几个不常用：</td>
+<td></td>
+</tr>
+<tr>
+<td>ios::nocreate</td>
+<td>不建立文件，所以文件不存在时打开失败</td>
+</tr>
+<tr>
+<td>ios::noreplace</td>
+<td>不覆盖文件，所以打开文件时如果文件存在失败</td>
+</tr>
+<tr>
+<td>ios::trunc</td>
+<td>如果文件存在，把文件长度设为0</td>
+</tr>
+</tbody></table>
+<p>关闭文件：file.close();                                &#x2F;&#x2F;与new之后要delete一样，打开文件后必须关闭文件</p>
+<p>例：ifstream file(“d:\\date.csv”,ios::app);                     &#x2F;&#x2F;路径名中的\要双写</p>
+<p>####使用函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> ch = file.<span class="built_in">get</span>(); <span class="comment">//去读一个字符，然后才能用eof判断是否为空 </span></span><br><span class="line"> <span class="keyword">if</span>(file.<span class="built_in">eof</span>())    <span class="comment">//如果 一个字符都未读到，表示文件为空</span></span><br><span class="line"> &#123;</span><br><span class="line">     ....</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//eof()函数要跟在读取语句后，用来判断是否读到文件结束符EOF。原因为：</span></span><br><span class="line"><span class="comment">//要清楚&quot;文件结束符&quot;(0xff).就是说我们文件最后的字符不是文件结束符,而最后的字符的下一位才是.所以操作再读多一次.</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fengzi_shen/article/details/2197327">参考资料</a></p>
+<p>####操作文件指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ifstream和ofstream都提供了成员函数来重定位文件定位指针（文件中下一个被读取或写入的字节号）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在ifstream中 这个成员函数为seekg（&quot;seek get&quot;）;在ofstream中为seekp（&quot;seek put&quot;）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输入流操作</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">seekg</span>(绝对位置);　		  <span class="comment">//绝对移动，　</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">seekg</span>(相对位置,参照位置);　 <span class="comment">//相对操作</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tellg</span>();　					  <span class="comment">//返回当前指针位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出流操作</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">seekp</span>(绝对位置);　		  <span class="comment">//绝对移动，　</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">seekp</span>(相对位置,参照位置);　 <span class="comment">//相对操作</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tellp</span>()和<span class="built_in">tellg</span>()成员函数分别用来返回当前get和put的指针位置</span><br><span class="line"></span><br><span class="line">参照位置：</span><br><span class="line"></span><br><span class="line">ios::beg　    <span class="comment">//相对于文件头</span></span><br><span class="line"></span><br><span class="line">ios::cur　    <span class="comment">//相对于当前位置</span></span><br><span class="line"></span><br><span class="line">ios::end　   <span class="comment">//相对于文件尾</span></span><br></pre></td></tr></table></figure>
+
+<p>例：  file.seekg(0,ios::end);       &#x2F;&#x2F;参照位置为文件结束处，相对位置为0，即相对于文件尾移动0，于是指针定位在文件结束处</p>
+<p>​          file.seekg(0,ios::beg);        &#x2F;&#x2F;基地址为文件头，偏移量为0，于是定位在文件头</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/c%2B%2B%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/4998210">参考资料</a></p>
+<p><code>string函数</code></p>
+<blockquote>
+<p><code>getline（）函数</code></p>
+<p>getline()的原型是istream&amp; getline ( istream &amp;is , string &amp;str , char delim );</p>
+<p>其中 istream &amp;is 表示一个输入流，譬如cin；string&amp;str表示把从输入流读入的字符串存放在这个字符串中（可以自己随便命名，str什么的都可以）；char delim表示遇到这个字符停止读入，在不设置的情况下系统默认该字符为’\n’，也就是回车换行符（遇到回车停止读入）。</p>
+<p><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_60263c1c0101ck25.html">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p><code>s.erase()函数</code></p>
+<p>erase函数的原型如下：</p>
+<p>（1）string&amp; erase ( size_t pos &#x3D; 0, size_t n &#x3D; npos );</p>
+<p>（2）iterator erase ( iterator position );</p>
+<p>（3）iterator erase ( iterator first, iterator last );</p>
+<p>也就是说有三种用法：</p>
+<p>（1）erase(pos,n); 删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符</p>
+<p>（2）erase(position);删除position处的一个字符(position是个string类型的迭代器)</p>
+<p>（3）erase(first,last);删除从first到last之间的字符（first和last都是迭代器）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">str</span> <span class="params">(<span class="string">&quot;This is an example phrase.&quot;</span>)</span></span>;  </span><br><span class="line">string::iterator it;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 第(1)种用法  </span></span><br><span class="line">str.<span class="built_in">erase</span> (<span class="number">10</span>,<span class="number">8</span>);  </span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;        <span class="comment">// &quot;This is an phrase.&quot;  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第(2)种用法  </span></span><br><span class="line">it=str.<span class="built_in">begin</span>()+<span class="number">9</span>;  </span><br><span class="line">str.<span class="built_in">erase</span> (it);  </span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;        <span class="comment">// &quot;This is a phrase.&quot;  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第(3)种用法  </span></span><br><span class="line">str.<span class="built_in">erase</span> (str.<span class="built_in">begin</span>()+<span class="number">5</span>, str.<span class="built_in">end</span>()<span class="number">-7</span>);  </span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;        <span class="comment">// &quot;This phrase.&quot;  </span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lj_2_0_2/article/details/51848875">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p><code>atoi()与stoi()函数</code></p>
+<p>atoi：表示 ascii to integer，C语言函数，包含在<ctdlib>头文件</p>
+<p>stoi：表示 string to integer，包含在<cstring>头文件</p>
+<p>二者作用均为把字符串转换为int.在使用Dev-C++编译时，在编译选项中已选iso C++11选项但仍然出错，必须在编译时加入如下指令：-std&#x3D;c++11。使用VS2017</p>
+<p>不同的是atoi()的参数是 const char* ,因此对于一个字符串str我们必须调用 c_str()的方法把这个string转换成 const char<em>类型的,而stoi()的参数是const string</em>,不需要转化为 const char*；</p>
+<p>stoi函数默认要求输入的参数字符串是符合int范围的[-2147483648, 2147483647]，否则会runtime error。<br>atoi函数则不做范围检查，若超过int范围，则显示-2147483648（溢出下界）或者2147483647（溢出上界）。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guhejian/p/6048856.html">参考资料1</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yky__xukai/article/details/79554963">参考资料2</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wzxwhd/p/6030083.html">参考资料3</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lina_acm/article/details/51865277">参考资料4</a></p>
+</blockquote>
+<blockquote>
+<p><code>itoa()函数</code></p>
+<p>itoa表示：integer to array，是广泛应用的非标准C语言和C++语言扩展函数。由于它不是标准C&#x2F;C++语言函数，所以不能在所有的编译器中使用。但是，大多数的编译器（如Windows上的）通常在&lt;stdlib.h&gt;&#x2F;<cstdlib>头文件中包含这个函数。</p>
+<p>功能：将任意类型的数字转换为字符串。在&lt;stdlib.h&gt;中与之有相反功能的函数是atoi。</p>
+<p>char *itoa( int value, char * <em>string,int radix</em>); </p>
+<p>原型说明：</p>
+<p>value：欲转换的数据。</p>
+<p>string：目标字符串的地址。</p>
+<p>radix：转换后的进制数，可以是10进制、16进制等。</p>
+<p>例：itoa(nu,str,10);            &#x2F;&#x2F;将nu转换为字符串并赋给str，第三个参数采用十进制。 </p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/itoa%E5%87%BD%E6%95%B0/3260813">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p><code>replace()函数</code></p>
+<p>此函数常用方法有九种，这里简单介绍第一种，其他方法见参考资料：</p>
+<p>string&amp; replace (size_t pos, size_t len, const string&amp; str) 用str 替换指定字符串从起始位置pos开始长度为len 的字符</p>
+<p>例：s.replace(s.find(“,”),1,”\t”);   &#x2F;&#x2F;在字符串s中查找第一个逗号，然后把逗号换成\t</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqing_12345/article/details/71459300">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p><code>find()函数</code></p>
+<p>所有重载函数：</p>
+<p>PS：网上关于以下函数的返回类型有int、size_type、size_t</p>
+<p>int find(char c, int pos &#x3D; 0) const;            &#x2F;&#x2F;从pos开始查找字符c在当前字符串的位置<br>int find(const char *s, int pos &#x3D; 0) const;        &#x2F;&#x2F;从pos开始查找字符串s在当前串中的位置<br>int find(const char *s, int pos, int n) const;    &#x2F;&#x2F;从pos开始查找字符串s中前n个字符在当前串中的位置<br>int find(const string &amp;s, int pos &#x3D; 0) const;    &#x2F;&#x2F;从pos开始查找字符串s在当前串中的位置</p>
+<p>int find_first_of(char c, int pos &#x3D; 0) const;    &#x2F;&#x2F;从pos开始查找字符c第一次出现的位置</p>
+<p> &#x2F;&#x2F;从pos开始查找当前串中第一个在s的前n个字符组成的数组里的字符的位置<br>int find_first_of(const char *s, int pos &#x3D; 0) const;</p>
+<p>int find_first_of(const char *s, int pos, int n) const;<br>int find_first_of(const string &amp;s,int pos &#x3D; 0) const;</p>
+<p><strong>共同点：</strong></p>
+<p>查找成功时返回所在位置，失败返回string::npos的值，string::npos一般是MAX_INT（即2^32 - 1）</p>
+<p><strong>差异：</strong></p>
+<p>find(): 查找字符串中第一次出现字符c、字符串s的位置；</p>
+<p>find_first_of(): 查找字符串中字符c、字符数组s中任意一个字符第一次出现的位置。</p>
+<p>以上所讲的所有的string查找函数，都有唯一的返回类型，那就是size_type，即一个无符号整数（按打印出来的算）。若查找成功，返回按查找规则找到的第一个字符或子串的位置；若查找失败，返回npos，即-1（打印出来为4294967295）。</p>
+<p><strong>现区分size_type、size_t：</strong></p>
+<p>为了使自己的程序有很好的移植性，c++程序员应该尽量使用size_t和size_type而不是int,                             unsigned</p>
+<p>size_t是全局定义的类型；size_type是STL类中定义的类型属性，用以保存任意string和vector类对象的长度</p>
+<p>string::size_type 制类型一般就是unsigned int, 但是不同机器环境长度可能不同 win32 和win64上长度差别;size_type一般也是unsigned int</p>
+<p>使用的时候可以参考：</p>
+<p>   string::size_type  a &#x3D;123;<br>   vector<int>size_type b&#x3D;234;<br>   size_t b&#x3D;456;</p>
+<p>size_t 使用的时候头文件需要 <cstddef> ；size_type 使用的时候需要<string>或者<vector></p>
+<p>sizeof(string::size_type) </p>
+<p>​     sizeof(vector<bool>::size_type)<br>     sizeof(vector<char>::size_type)<br>     sizeof(size_t)<br>     上述长度均相等，长度为win32:4 win64:8</p>
+<p>二者联系：在用下标访问元素时，vector使用vector::size_type作为下标类型，而数组下标的正确类型则是size_t</p>
+<p>例：std::string::size_type posA &#x3D; s.find(a);    &#x2F;&#x2F;使用size_type容器 ，<br>    if (posA !&#x3D; std::string::npos)             &#x2F;&#x2F;如果s字符串中存在a，即posA不是npos<br>        {….} </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/richard_123/article/details/51140229">参考资料1</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/388113220.html">参考资料2</a></p>
+</blockquote>
+<blockquote>
+<p><code>resize()函数</code></p>
+<p>1、resize(n)<br>调整容器的长度大小，使其能容纳n个元素。<br>如果n小于容器的当前的size，则删除多出来的元素。<br>否则，添加采用值初始化的元素。<br>2、 resize(n，t)<br>多一个参数t，将所有新添加的元素初始化为t。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wdkirchhoff/article/details/41988201">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p><code>peek()函数</code></p>
+<p>功能：peek函数用于读取并返回下一个字符，但并不提取该字符到输入流中，也就是说，依然让该字符作为将要提取到输入流的下一个字符。</p>
+<p>例：</p>
+<p>if(file.peek() &#x3D;&#x3D; EOF)    &#x2F;&#x2F;如果文件指针下一个字符为EOF，即读到文件尾。<br>{….}</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cs_zlg/article/details/8271741">参考资料</a></p>
+</blockquote>
+</div><div class="article-licensing box"><div class="licensing-title"><p>csv文件数据操作函数总结</p><p><a href="http://example.com/2018/06/20/csv文件数据操作函数总结/">http://example.com/2018/06/20/csv文件数据操作函数总结/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>BaldStrong</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-06-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2018-07-11</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/09/08/core%20Java%E7%AC%94%E8%AE%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">《Core Java》读书笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/05/04/HTML%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%E8%AE%B0%E5%BD%95/"><span class="level-item">HTML学习代码记录</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="BaldStrong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">BaldStrong</p><p class="is-size-6 is-block">学习中的菜鸟</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>WuHan, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/BaldStrong" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BaldStrong"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-02-21T08:01:37.995Z">2022-02-21</time></p><p class="title"><a href="/2022/02/21/hello-world/">Hello World</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-03-09T16:00:00.000Z">2019-03-10</time></p><p class="title"><a href="/2019/03/10/Linux%E7%AC%94%E8%AE%B0/">Linux笔记</a></p><p class="categories"><a href="/categories/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-03-09T16:00:00.000Z">2019-03-10</time></p><p class="title"><a href="/2019/03/10/Shell%E5%91%BD%E4%BB%A4%E7%BB%93%E6%9E%84%E5%92%8C%E8%A7%84%E8%8C%83/">Shell命令结构和规范</a></p><p class="categories"><a href="/categories/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-03-09T16:00:00.000Z">2019-03-10</time></p><p class="title"><a href="/2019/03/10/%E3%80%8AShell%20%E6%95%99%E7%A8%8B-%E8%8F%9C%E9%B8%9F%E6%95%99%E7%A8%8B%E3%80%8B%E7%AC%94%E8%AE%B0/">《Shell 教程-菜鸟教程》笔记</a></p><p class="categories"><a href="/categories/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2018-09-07T16:00:00.000Z">2018-09-08</time></p><p class="title"><a href="/2018/09/08/Android%20Studio%E8%87%AA%E5%B8%A6%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%81%94%E7%BD%91/">Android Studio自带模拟器联网</a></p><p class="categories"><a href="/categories/Android/">Android</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/03/"><span class="level-start"><span class="level-item">三月 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">九月 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/06/"><span class="level-start"><span class="level-item">六月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/05/"><span class="level-start"><span class="level-item">五月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/C/"><span class="level-start"><span class="level-item">C++</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"><span class="level-start"><span class="level-item">学习之路</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%99%E7%A8%8B/"><span class="level-start"><span class="level-item">教程</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML/"><span class="tag">HTML</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tag">教程</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AC%94%E8%AE%B0/"><span class="tag">笔记</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="BaldStrong&#039;s Log Cabin" height="28"></a><p class="is-size-7"><span>&copy; 2022 BaldStrong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
